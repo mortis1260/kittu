@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Happy Birthday, My Love</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Quicksand:wght@400;600&family=Caveat:wght@600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Quicksand:wght@400;600&display=swap">
+<style>
+:root{--bg:#fff5f7;--card:#ffffff;--ink:#5a2a3a;--accent:#e8537a;--soft:#ffd6e0;--shadow:rgba(232,83,122,.25);color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#241219;--card:#341a24;--ink:#ffe3ea;--accent:#ff7a9c;--soft:#4a2433;--shadow:rgba(0,0,0,.45);color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#241219;--card:#341a24;--ink:#ffe3ea;--accent:#ff7a9c;--soft:#4a2433;--shadow:rgba(0,0,0,.45);color-scheme:dark}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Quicksand",system-ui,sans-serif;overflow-x:hidden}
+h1,h2,.script{font-family:"Dancing Script","Brush Script MT",cursive;font-weight:700}
+section{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:64px 20px;text-align:center;position:relative}
+h1{font-size:clamp(2.6rem,10vw,5.5rem);margin:.2em 0;color:var(--accent);line-height:1.1}
+h2{font-size:clamp(2rem,7vw,3.2rem);margin:0 0 .6em;color:var(--accent)}
+p.sub{font-size:1.1rem;opacity:.85;max-width:30em}
+button.main{background:var(--accent);color:#fff;border:0;border-radius:999px;padding:14px 32px;font:600 1.05rem "Quicksand",sans-serif;cursor:pointer;box-shadow:0 8px 22px var(--shadow);transition:transform .2s}
+button.main:hover{transform:scale(1.06)}
+#hearts{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+#hearts span{position:absolute;bottom:-40px;animation:rise linear forwards;opacity:.7}
+@keyframes rise{to{transform:translateY(-110vh) rotate(25deg);opacity:0}}
+section>*{position:relative;z-index:1}
+.env{width:min(320px,80vw);height:210px;background:var(--soft);border-radius:10px;position:relative;cursor:pointer;box-shadow:0 12px 30px var(--shadow);margin:20px auto;transition:transform .3s}
+.env:hover{transform:translateY(-4px)}
+.env::before{content:"";position:absolute;inset:0;background:linear-gradient(to bottom right,transparent 49%,rgba(0,0,0,.08) 50%) left/50% 100% no-repeat,linear-gradient(to bottom left,transparent 49%,rgba(0,0,0,.08) 50%) right/50% 100% no-repeat;border-radius:10px}
+.env .seal{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-size:3rem}
+.letter{max-width:900px;background:var(--card);border-radius:14px;padding:28px 26px;box-shadow:0 14px 34px var(--shadow);text-align:left;line-height:1.75;display:none;animation:pop .6s ease}
+.letter.show{display:block}
+.letter p{margin:.7em 0}
+.letter .sign{font-family:"Dancing Script",cursive;font-size:1.8rem;color:var(--accent);text-align:right}
+@keyframes pop{from{opacity:0;transform:translateY(24px) scale(.96)}to{opacity:1;transform:none}}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;align-items:start;width:min(1000px,100%)}
+@media (max-width:600px){.grid{grid-template-columns:repeat(2,1fr)}}
+.pol{background:var(--card);padding:10px 10px 14px;border-radius:6px;box-shadow:0 10px 24px var(--shadow);transform:rotate(var(--r));transition:transform .25s}
+.pol:hover{transform:rotate(0) scale(1.05)}
+.pol label{display:flex;align-items:center;justify-content:center;aspect-ratio:1;background:var(--soft);border-radius:4px;cursor:pointer;overflow:hidden;font-size:2rem}
+.pol img{width:100%;height:auto;display:block}
+.pol label.has{aspect-ratio:auto}
+.pol input{display:none}
+.pol .cap{font-family:"Caveat","Dancing Script",cursive;font-size:1.4rem;margin-top:8px;color:var(--accent)}
+.rgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:16px;width:min(760px,100%)}
+.rh{aspect-ratio:1;border:0;border-radius:18px;background:var(--soft);cursor:pointer;font:600 .95rem/1.4 "Quicksand",sans-serif;color:var(--ink);padding:12px;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px var(--shadow);transition:transform .2s,background .3s}
+.rh .h{font-size:2.4rem;color:var(--accent)}
+.rh:hover{transform:scale(1.05)}
+.rh.open{background:var(--card)}
+.more{font-size:2.4rem;color:var(--accent);margin-top:34px;opacity:0;transition:opacity 1.2s}
+.more.show{opacity:1}
+.cake{width:min(280px,70vw);margin:10px auto 0}
+.candles{display:flex;justify-content:center;gap:34px;margin-bottom:-6px}
+.candle{width:12px;height:46px;background:linear-gradient(#fff,#ffb3c6);border-radius:3px;position:relative;cursor:pointer;border:0;padding:0}
+.flame{position:absolute;left:50%;top:-24px;width:14px;height:22px;margin-left:-7px;background:radial-gradient(circle at 50% 70%,#fff4a8,#ffb300 60%,#ff6a00);border-radius:50% 50% 50% 50%/60% 60% 40% 40%;animation:flick .5s infinite alternate;transition:opacity .3s,transform .3s}
+.candle.out .flame{opacity:0;transform:scale(.2)}
+@keyframes flick{from{transform:scale(1) rotate(-3deg)}to{transform:scale(1.1,.94) rotate(3deg)}}
+.layer{height:50px;border-radius:12px 12px 8px 8px}
+.l1{background:#ffb3c6;width:62%;margin:0 auto}
+.l2{background:#ff8fab;width:82%;margin:-4px auto 0}
+.l3{background:#e8537a;width:100%;margin:-4px auto 0}
+.plate{height:10px;background:var(--soft);border-radius:50%;width:120%;margin:0 -10%;box-shadow:0 6px 16px var(--shadow)}
+#wish{min-height:3.2em;font-size:1.5rem;margin-top:22px}
+canvas#conf{position:fixed;inset:0;pointer-events:none;z-index:50;width:100%;height:100%}
+footer{padding:30px 20px;text-align:center;opacity:.8}
+</style>
+</head>
+<body>
+<div id="hearts"></div>
+<canvas id="conf"></canvas>
+
+<section id="top">
+<div class="script" style="font-size:1.8rem">to the love of my life</div>
+<h1>Happiest Birthdayyyy,<br><span id="nm">Kritikaaa</span> ♥</h1>
+<p class="sub">kuch to banaya hai apke liye :) haan AI se hii banwaya hai butttt contents are mine okay :></p>
+<button class="main" onclick="document.getElementById('letter').scrollIntoView()">Open your surprise !!</button>
+</section>
+
+<section id="letter">
+<h2>A letter for you</h2>
+<div class="env" id="env" onclick="openLetter()"><div class="seal">💌</div></div>
+<p class="sub" id="hint">Tap the envelope</p>
+<div class="letter" id="paper">
+<p>Thank you for coming in my life, you made it so much better! I had no idea we would end up falling in love with eachother and I have no regrets about this💖. Thank you for loving me as a lover, friend and as a mother as well 🥹🥹
+no matter what happens between us, we shall stay together okay? NO MATTER WHAT
+I'll be there for you, and you be there for me, us against this world okay? </p>
+
+<p>You are such a kind soul, with a beautiful smile. Such a generous, lovely, sweet personnnnn no wonder I fell in love with youuuu 💗💗 be yourself, I love you the way you are. You eyes, your smile, your hair everything of youuu I admire them so muchhh meri rasmalaiiii 💕 You are always there whenever I needed you, whenever I feel so low, whenever I feel like punching myself. You are the one who can calm me down well, I mean ur voice is enough heheeee. I am so much obsessed with youuuu AAAAAAAAAAAA mannnn krta basss apko dekhta jauuu, kisses and hugs duuuu muahhhhh. Hamari jodi ko kisi ki nazar naa lage 🧿✨ our timing is so good sometimes hehe I love that, our bond is too great, we understand each other well, we joke, we laugh, we sometimes cry toooo. wtever I want these to be with you onlyy, I cannot imagine my life without you, nopeeeee impossibleeeeee 🌸 Please be yourself okay, I feel so easy and peace around you, your arms feels like home, laying my head on ur chest feels like heaven, I find pulling your cheeks so cuteee, I love to hold your handssss, waist (and thighs 😋 eheheheee). Please don't be insecure about ur beauty, trust me you are such a beautiful person whether inside or out. I mean I fell for you right? how can you even think that you are not pretty or somethingggg it's not fair hmph. I don't care what typa body you have, I find it beautiful regardless and I love it okayyy.
+I wanted to be somebody to someone uk, am glad that "someone" is YOU ❣️ </p>
+
+<p>Please take care of yourself okay? study well, eat good, drink enough water. For OUT future righttttttt don't forget thattt. If the world get's rough to you, come back to me okay? (even if I hurt u pls come to me, I promise I never meant to hurt u intentionally) we shall fix and sort out everything together promise? I know things are gonna be rough near future (career and all), but we shall overcome all that okayyyyyyy </p>
+
+I AM URS always remember that, I ain't going anywhere. I love you Kritika, wish you a very very happiest birthday. I hope you succeed in life and have a great future ahead (with me)!! May god bless you my love 💝
+<div class="sign">Yours, Dekisugi 💖</div>
+</div>
+</section>
+
+<section id="gallery">
+<h2>Our little moments</h2>
+<div class="grid" id="grid"></div>
+</section>
+
+<section id="reasons">
+<h2>Reasons I love you</h2>
+<p class="sub">Tap each heart</p>
+<div class="rgrid" id="rgrid"></div>
+<div class="more script" id="more">and many more…</div>
+</section>
+
+<section id="cake-sec">
+<h2>Make a wish</h2>
+<p class="sub">Tap each candle to blow it out</p>
+<div class="cake">
+<div class="candles" id="candles"></div>
+<div class="layer l1"></div><div class="layer l2"></div><div class="layer l3"></div><div class="plate"></div>
+</div>
+<div id="wish" class="script"></div>
+<button class="main" id="again" style="display:none" onclick="relight()">Light them again</button>
+</section>
+
+<footer>Made with 💖 for a cutiepie </footer>
+
+<script>
+const C={name:"Kritika",
+  photos:[
+   {src:"photos/3.jpg",cap:"pretty us :>"},
+   {src:"photos/4.jpg",cap:"the day we thought we are doomed, but we survived together!!"},
+   {src:"photos/8.jpg",cap:"cuties in the temple"},
+   {src:"photos/5.jpg",cap:"made for each other?"},
+   {src:"photos/1.jpg",cap:"actually looks like we are husband-wife"},
+   {src:"photos/2.jpg",cap:"us trekking together, it was chaos but we made it!"},
+   {src:"photos/6.jpg",cap:"silly us (I love it)"},
+   {src:"photos/7.jpg",cap:"what do I even say here xD"}
+  ], reasons:["Your eyes, smile, hair.. everything!",
+ "You are so kind, sweet, gentle, soft",
+ "You were there for me at my lowest, listened and consoled me when I needed",
+ "You made me feel special, as a nobody like me.. it really made me happy",
+ "I can literally share anything with you, without any hesitation",
+ "All time spent with you so peaceful",
+ "You trust me with all your past, insecurities and never hesistate to tell me whatever is on your mind",
+ "The way we vibes, our silly laughs, dumb jokes, even when we sit together with nothing to say",
+ "You light up my day like no one else can",
+ "You take care of me so well, sometimes as a mother sometimes as a lover"]};
+document.getElementById("nm").textContent=C.name;
+
+const hearts=document.getElementById("hearts");
+setInterval(()=>{
+  const s=document.createElement("span");
+  s.textContent=["❣️","💗","💕","🌸"][Math.floor(Math.random()*4)];
+  s.style.left=Math.random()*100+"%";
+  s.style.fontSize=12+Math.random()*22+"px";
+  s.style.animationDuration=6+Math.random()*6+"s";
+  hearts.appendChild(s);
+  setTimeout(()=>s.remove(),12500);
+},700);
+
+function openLetter(){
+  document.getElementById("env").style.display="none";
+  document.getElementById("hint").style.display="none";
+  document.getElementById("paper").classList.add("show");
+  burst(60);
+}
+
+const grid=document.getElementById("grid");
+C.photos.forEach((p,i)=>{
+  const d=document.createElement("div");
+  d.className="pol";
+  d.style.setProperty("--r",(i%2?1:-1)*(1+Math.random()*3)+"deg");
+  d.innerHTML='<label><span>📷</span><input type="file" accept="image/*"></label><div class="cap"></div>';
+  d.querySelector(".cap").textContent=p.cap;
+  const lb=d.querySelector("label");
+  const show=src=>{lb.classList.add("has");lb.innerHTML='<img alt="">';lb.querySelector("img").src=src;};
+  d.querySelector("input").addEventListener("change",e=>{
+    const f=e.target.files[0];
+    if(!f)return;
+    const r=new FileReader();
+    r.onload=()=>show(r.result);
+    r.readAsDataURL(f);
+  });
+  if(p.src)show(p.src);
+  grid.appendChild(d);
+});
+
+C.reasons.forEach(t=>{
+  const b=document.createElement("button");
+  b.className="rh";
+  b.innerHTML='<span class="h">💗</span>';
+  b.onclick=()=>{
+    if(b.classList.contains("open"))return;
+    b.classList.add("open");
+    b.textContent=t;
+    if(document.querySelectorAll(".rh.open").length===C.reasons.length){
+      document.getElementById("more").classList.add("show");
+      burst(120);
+    }
+  };
+  document.getElementById("rgrid").appendChild(b);
+});
+
+const cs=document.getElementById("candles");
+let out=0;
+for(let i=0;i<5;i++){
+  const b=document.createElement("button");
+  b.className="candle";
+  b.setAttribute("aria-label","Candle "+(i+1));
+  b.innerHTML='<div class="flame"></div>';
+  b.onclick=()=>{
+    if(b.classList.contains("out"))return;
+    b.classList.add("out");
+    out++;
+    if(out===5){
+      document.getElementById("wish").textContent="Wish made! I hope it comes true <3";
+      document.getElementById("again").style.display="inline-block";
+      burst(220);
+    }
+  };
+  cs.appendChild(b);
+}
+function relight(){
+  document.querySelectorAll(".candle").forEach(c=>c.classList.remove("out"));
+  out=0;
+  document.getElementById("wish").textContent="";
+  document.getElementById("again").style.display="none";
+}
+
+const cv=document.getElementById("conf"),cx=cv.getContext("2d");
+let ps=[],run=false;
+function fit(){cv.width=innerWidth;cv.height=innerHeight}
+fit();addEventListener("resize",fit);
+function burst(n){
+  const cols=["#e8537a","#ff8fab","#ffd6e0","#ffb300","#fff","#c9184a"];
+  for(let i=0;i<n;i++)ps.push({x:innerWidth/2,y:innerHeight/2,vx:(Math.random()-.5)*16,vy:Math.random()*-14-2,w:6+Math.random()*6,c:cols[Math.floor(Math.random()*cols.length)],r:Math.random()*6,vr:(Math.random()-.5)*.4,life:140+Math.random()*60});
+  if(!run){run=true;requestAnimationFrame(tick)}
+}
+function tick(){
+  cx.clearRect(0,0,cv.width,cv.height);
+  ps=ps.filter(p=>p.life>0);
+  ps.forEach(p=>{
+    p.vy+=.28;p.x+=p.vx;p.y+=p.vy;p.r+=p.vr;p.life--;
+    cx.save();cx.translate(p.x,p.y);cx.rotate(p.r);cx.fillStyle=p.c;cx.globalAlpha=Math.min(1,p.life/40);cx.fillRect(-p.w/2,-p.w/4,p.w,p.w/2);cx.restore();
+  });
+  if(ps.length)requestAnimationFrame(tick);else run=false;
+}
+</script>
+</body>
+</html>
